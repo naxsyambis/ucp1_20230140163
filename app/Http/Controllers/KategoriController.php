@@ -10,6 +10,7 @@ class KategoriController extends Controller
 {
     public function index()
     {
+        // Mengambil semua kategori beserta jumlah produk yang berelasi
         $kategoris = Kategori::with('product')->get();
         return view('kategori.index', compact('kategoris'));
     }

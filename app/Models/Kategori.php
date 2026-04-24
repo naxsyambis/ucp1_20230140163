@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
-        'product_id',
         'name'
     ];
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Product::class, 'category_id');
     }
 }

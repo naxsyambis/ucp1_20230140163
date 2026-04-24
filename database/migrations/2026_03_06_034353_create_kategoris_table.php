@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('kategoris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->timestamps();
         });
     }
 

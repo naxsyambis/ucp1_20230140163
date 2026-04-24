@@ -31,8 +31,9 @@ class ProductController extends Controller
     public function create()
     {
         $users = User::orderBy('name')->get();
+        $kategoris = Kategori::all();
 
-        return view('product.create', compact('users'));
+        return view('product.create', compact('users', 'kategoris'));
     }
 
     public function show($id)

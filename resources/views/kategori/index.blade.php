@@ -36,12 +36,14 @@
                                         <td class="px-6 py-4 font-medium text-gray-800 dark:text-gray-100">
                                             {{ $loop->iteration }}
                                         </td>
+
                                         <td class="px-6 py-4 text-gray-800 dark:text-gray-200 font-semibold">
                                             {{ $kategori->name }}
                                         </td>
+
                                         <td class="px-6 py-4">
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
-                                                {{ $kategori->product->name ?? 'Tidak ada' }}
+                                                {{ $kategori->products_count }} produk
                                             </span>
                                         </td>
                                     </tr>
@@ -49,9 +51,6 @@
                                     <tr>
                                         <td colspan="3" class="px-6 py-12 text-center text-gray-400 dark:text-gray-500">
                                             <div class="flex flex-col items-center justify-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-3 text-gray-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                                                </svg>
                                                 <span class="text-base font-medium text-gray-500">Belum ada data kategori.</span>
                                             </div>
                                         </td>
