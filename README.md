@@ -73,13 +73,13 @@ User dapat melihat produk berdasarkan kategori yang tersedia.
 ### `categories`
 | Field | Type |
 |------|------|
-| id | bigint |
+| id | int |
 | name | string |
 
 ### `products`
 | Field | Type |
 |------|------|
-| id | bigint |
+| id | int |
 | name | string |
 | kategori_id | foreign key |
 
