@@ -4,7 +4,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     
-                    {{-- Header dengan Tombol Back --}}
+                    {{-- Bagian Header: Berisi tombol kembali dan judul halaman --}}
                     <div class="flex items-center gap-3 mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
                         <a href="{{ route('kategori.index') }}" class="p-2 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -17,27 +17,25 @@
                         </div>
                     </div>
 
+                    {{-- Form Input: Mengarah ke fungsi 'store' di Controller --}}
                     <form action="{{ route('kategori.store') }}" method="POST" class="space-y-6">
                         @csrf
                         
+                        {{-- Input Nama Kategori --}}
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama Kategori <span class="text-red-500">*</span></label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-900 dark:border-gray-600 dark:text-white transition" placeholder="Contoh: Elektronik, Pakaian..." required>
-                            @error('name') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Nama Kategori <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" name="name" value="{{ old('name') }}" 
+                                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-900 dark:border-gray-600 dark:text-white transition" 
+                                placeholder="Contoh: Baju, Pakaian..." required>
+                            
+                            @error('name') 
+                                <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> 
+                            @enderror
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Hubungkan ke Produk <span class="text-red-500">*</span></label>
-                            <select name="product_id" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-900 dark:border-gray-600 dark:text-white transition" required>
-                                <option value="">-- Pilih Produk Terkait --</option>
-                                @foreach($products as $product)
-                                    <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('product_id') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
-                        </div>
-
-                        {{-- Action Buttons diletakkan di kanan --}}
+                        {{-- Tombol Aksi: Batal dan Simpan --}}
                         <div class="flex items-center justify-end gap-3 pt-4">
                             <a href="{{ route('kategori.index') }}" class="px-4 py-2 bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 rounded-md text-sm font-semibold transition">
                                 Batal
