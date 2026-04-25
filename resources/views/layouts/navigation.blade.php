@@ -24,10 +24,11 @@
                         {{ __('Product') }}
                     </x-nav-link>
 
+                    @can('manage-category')
                     <x-nav-link :href="route('kategori.index')" :active="request()->routeIs('kategori.*')">
                         {{ __('Kategori') }}
                     </x-nav-link>
-
+                    @endcan
                 </div>
             </div>
 

@@ -11,7 +11,8 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Daftar data kategori produk Anda</p>
                         </div>
                         {{-- Link ke halaman form tambah kategori --}}
-                        <a href="{{ route('kategori.create') }}" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition">
+                        <a href="{{ route('kategori.create') }}" 
+                        class="px-4 py-2 bg-black hover:bg-gray-800 text-white text-sm font-semibold rounded-lg transition">
                             + Add Category
                         </a>
                     </div>

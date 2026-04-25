@@ -4,23 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
-use App\Models\Product; // Wajib dipanggil untuk dropdown produk
+use App\Models\Product; 
 
 class KategoriController extends Controller
 {
+    /**
+     * Menampilkan daftar semua kategori.
+     */
     public function index()
     {
-        // Mengambil semua kategori beserta jumlah produk yang berelasi
-        $kategoris = Kategori::with('product')->get();
+        // Mengambil semua kategori beserta relasi produknya
+        $kategoris = Kategori::with('products')->get(); 
+        
         return view('kategori.index', compact('kategoris'));
     }
 
+    /**
+     * Menampilkan form untuk membuat kategori baru.
+     */
     public function create()
     {
+        // Berdasarkan struktur baru, Kategori tidak butuh data Produk saat dibuat.
         // Cukup tampilkan view form saja.
         return view('kategori.create');
     }
 
+    /**
+     * Menyimpan kategori baru ke database.
+     */
     public function store(Request $request)
     {
         // Validasi input: Nama wajib diisi, berupa teks, dan unik di tabel kategoris
@@ -36,17 +47,20 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan!');
     }
 
+    /**
+     * Menampilkan detail kategori tertentu.
+     */
     public function show($id)
     {
-        // mencari kategori berdasarkan id dan memuat relasi produk
-        $kategori = Kategori::with('product')->findOrFail($id);
+        // Mencari kategori berdasarkan ID dan memuat relasi produk yang dimilikinya
+        $kategori = Kategori::with('products')->findOrFail($id);
+        
         return view('kategori.view', compact('kategori'));
     }
 
     /**
      * Menampilkan form untuk mengedit kategori.
      */
-
     public function edit($id)
     {
         // Mencari data kategori yang ingin diubah
@@ -59,7 +73,6 @@ class KategoriController extends Controller
     /**
      * Memperbarui data kategori di database.
      */
-
     public function update(Request $request, $id)
     {
         // Validasi: unique kecuali untuk ID kategori itu sendiri (agar tidak error saat klik save tanpa ganti nama)
@@ -81,7 +94,6 @@ class KategoriController extends Controller
     /**
      * Menghapus data kategori.
      */
-
     public function destroy($id)
     {
         // Mencari data yang akan dihapus

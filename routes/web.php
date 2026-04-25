@@ -25,6 +25,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+/**
+ * =========================================================
+ * PRODUCT MANAGEMENT (ADMIN ONLY)
+ * =========================================================
+ * auth → login
+ * can:manage-product → hanya admin / role tertentu
+ */
+
 Route::middleware(['auth', 'can:manage-product'])->group(function () {
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
@@ -33,19 +41,27 @@ Route::middleware(['auth', 'can:manage-product'])->group(function () {
     Route::delete('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 });
 
+/**
+ * =========================================================
+ * PRODUCT VIEW (USER & ADMIN)
+ * =========================================================
+ * Semua user login bisa lihat produk
+ */
+
 Route::middleware('auth')->group(function () {
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
-    Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
-    Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
-    Route::get('/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show');
-    Route::get('/kategori/{kategori}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
-    Route::put('/kategori/{kategori}', [KategoriController::class, 'update'])->name('kategori.update');
-    Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('kategori.delete');
-});
+
+
+Route::middleware(['auth', 'verified', 'can:manage-category'])->group(function () {
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index'); // List kategori
+    Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create'); // Form tambah
+    Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store'); // Simpan
+    Route::get('/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show'); //detail
+    Route::get('/kategori/{kategori}/edit', [KategoriController::class, 'edit'])->name('kategori.edit'); // form edit
+    Route::put('/kategori/{kategori}', [KategoriController::class, 'update'])->name('kategori.update'); //update
+Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])->name('kategori.destroy');}); //delete
 
 require __DIR__.'/auth.php';
