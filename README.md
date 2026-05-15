@@ -111,8 +111,23 @@ http://127.0.0.1:8000/api/login
 
 <img width="1757" height="622" alt="image" src="https://github.com/user-attachments/assets/a9ecfba5-36cd-430f-b5be-185635509bf2" />
 
+CATEGORIES
+
 http://127.0.0.1:8000/api/categories
 
 <img width="1758" height="721" alt="image" src="https://github.com/user-attachments/assets/0261c3dd-99b3-46e1-80b2-2d5a40de977b" />
 
+http://127.0.0.1:8000/api/categories
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4ae10fbb-51ff-490d-9ade-fb68c8eeae6b" />
+
+http://127.0.0.1:8000/api/categories/1
+
+<img width="1761" height="708" alt="image" src="https://github.com/user-attachments/assets/3d7e1296-b89e-4d6d-9851-6677cbdabe2f" />
+
+http://127.0.0.1:8000/api/categories/1
+
+<img width="1753" height="543" alt="image" src="https://github.com/user-attachments/assets/c351c58d-b7b9-4297-bca8-8ea753b9f2f1" />
+
+PRODUCT
+
